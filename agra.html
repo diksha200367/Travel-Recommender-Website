@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Agra</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="css/responsive.css"/>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+ <link rel="stylesheet" href="css/destdescription.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="./image/Ghummakkad.png" alt="" />
+                </div>
+                <ul>
+                    <div class="btn">
+                        <i class="fas fa-times close-btn"></i>
+                    </div>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html">ABOUT</a></li>
+                    <li><a href="destination.html">DESTINATIONS</a></li>
+                    <li><a href="front4.html">GET RECOMMENDATIONS</a></li>
+                </ul>
+                <div class="btn">
+                    <i class="fas fa-bars menu-btn"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <br><br><br>
+
+    <!-- Slideshow container -->
+    <section id="image-slider">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 5</div>
+                <img src="./image/agra/agra1.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 5</div>
+                <img src="./image/agra/agra2.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 5</div>
+                <img src="./image/agra/agra3.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 5</div>
+                <img src="./image/agra/agra5.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 5</div>
+                <img src="./image/agra/agra4.jpeg" style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+    </section>
+
+    <!-- Content Area Start -->
+    <div class="container">
+        <h2 class="headings"><u>Agra</u></h2>
+        <p class="heading-normal-txt">A City of Eternal Splendor</p>
+        <div class="content">
+            <div class="left-side">
+                <p class="lead">
+                    Situated along the Yamuna River in Uttar Pradesh, Agra is a city renowned for its rich heritage and architectural wonders. 
+                    Its crowning jewel, the <b>Taj Mahal</b>, is a UNESCO World Heritage Site and one of the Seven Wonders of the World. 
+                    This white marble mausoleum, built by Emperor Shah Jahan in memory of his wife Mumtaz Mahal, stands as a timeless symbol of love.<br><br>
+
+                    The city’s historical significance extends to the grand <b>Agra Fort</b>, a majestic red sandstone fortress, 
+                    and the nearby <b>Fatehpur Sikri</b>, a stunning yet abandoned Mughal capital known for its architectural brilliance.<br><br>
+
+                    Beyond monuments, Agra offers vibrant markets featuring marble inlay work, leather goods, and traditional crafts. 
+                    The city is also a paradise for food lovers, offering Mughlai delicacies like biryani, kebabs, and the sweet delight <b>Petha</b>.<br><br>
+
+                    Agra seamlessly blends its Mughal legacy with modern charm, making it an irresistible destination for history buffs, 
+                    romantics, and food enthusiasts alike. Whether you’re admiring its iconic landmarks or indulging in its rich flavors, 
+                    Agra promises an unforgettable journey into the heart of India’s cultural and architectural splendor.<br><br>
+                    </a>
+                </p>
+            </div>
+            <div class="right-side">
+                <div id="weather-info" data-city="Agra">
+                    <h3>Current Weather in <span id="city-name">Agra</span></h3>
+                    <p id="weather-details">Loading...</p>
+                    <div id="weather-map" style="height: 400px; width: 100%;"></div>
+                    <div style="text-align:center;">
+                      <button> <a href="https://www.irctc.co.in" target="_blank" class="btn-booking">Book Flights, Trains & Hotels</a> </button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Area End -->
+
+    <!-- Where to Visit Starts -->
+    <section id="where_to_visit">
+        <div class="container">
+            <h1 class="headings">Popular <span>Tourist</span> Attractions:</h1>
+            <br>
+            <div class="row-wise-image">
+                <div class="lg-img"> 
+                    <img src="./image/agra/Top 15 Places to Visit in India.jpeg" alt="Taj Mahal"/>
+                    <div class="img-content">
+                        <a href="https://en.wikipedia.org/wiki/tajmahal" target="_blank" style="color: blue;;"> <h2>Taj Mahal</h2>
+                        </a></div>  
+                </div>
+                <div class="lg-img">
+                    <img src="./image/agra/agrafort.jpeg" alt="Agra Fort"/>
+                    <div class="img-content">
+                        <a href="https://en.wikipedia.org/wiki/Agra fort" target="_blank" style="color: blue;">
+                        <h2>Agra Fort</h2>
+                    </a></div>
+                </div>
+                <div class="lg-img">
+                    <img src="./image/agra/Fatehpur Sikri once-flourishing capital of the Mughal Empire.jpeg" alt="Fatehpur Sikri"/>
+                    <div class="img-content">
+                        <a href="https://en.wikipedia.org/wiki/Fatehpur Sikri" target="_blank" style="color: blue;"><h2>Fatehpur Sikri</h2>
+                    </a></div>
+                </div>
+                <div class="lg-img">
+                    <img src="./image/agra/Jama Masjid.jpeg" alt="Jama Masjid"/>
+                    <div class="img-content">
+                        <a href="https://en.wikipedia.org/wiki/Jama Mosque" target="_blank" style="color: blue;"><h2>Jama Masjid</h2>
+                    </a></div>
+                </div>
+                <div class="lg-img">
+                    <img src="./image/agra/India,interior of the tomb of Akbar The….jpeg" alt="Akbar's Tomb"/>
+                    <div class="img-content">
+                        <a href="https://en.wikipedia.org/wiki/Akbar's Tomb" target="_blank" style="color: blue;"><h2>Akbar's Tomb</h2>
+                    </a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Where to Visit Ends -->
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/destdescription.js"></script>
+    <script src="js/weather.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKW3-nbqZ8w2OnNphyqpfcPk4V-xEIALA&callback=initMap"></script>
+</body>
+</html>

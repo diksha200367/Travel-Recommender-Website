@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Recommender</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      background-image: url(image/homepage/recbg3.jpg);
+    }
+    header {
+      background-color: maroon;
+      color: white;
+      padding: 1em 0;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      height: 50px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      text-transform: uppercase;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 1200px;
+      background: rgb(194, 179, 179);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    select, button {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .dropdown-container {
+      position: relative;
+      width: 100%;
+    }
+    .dropdown-checkboxes {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1;
+  padding: 10px;
+}
+
+.dropdown-checkboxes div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Adjust columns as needed */
+  gap: 10px; /* Equal spacing between checkboxes */
+}
+
+.dropdown-checkboxes label {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropdown-checkboxes label:hover {
+  background-color: #f1f1f1;
+}
+
+    button {
+      background-color: maroon;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    button:hover {
+      background-color: darkred;
+    }
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .card p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .card a{
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Travel Recommender System
+  </header>
+  <div class="container">
+    <form id="recommendationForm">
+      <label for="season">Preferred Season:</label>
+      <select id="season" required>
+        <option value="">Select a season</option>
+        <option value="Winter">Winter</option>
+        <option value="Summer">Summer</option>
+        <option value="Spring">Spring</option>
+        <option value="Autumn">Autumn</option>
+        <option value="Monsoon">Monsoon</option>
+      </select>
+
+      <label for="activity">Preferred Activity:</label>
+      <div class="dropdown-container">
+        <button type="button" onclick="toggleDropdown()">Select Activities</button>
+        <div id="activityDropdown" class="dropdown-checkboxes">
+          <div>
+            <label><input type="checkbox" value="TREKKING"> TREKKING</label>
+            <label><input type="checkbox" value="BEACH"> BEACH</label>
+            <label><input type="checkbox" value="HISTORICAL EXPLORATION"> HISTORICAL EXPLORATION</label>
+            <label><input type="checkbox" value="WILDLIFE SAFARI"> WILDLIFE SAFARI</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ADVENTURE ACTIVITIES"> ADVENTURE ACTIVITIES</label>
+            <label><input type="checkbox" value="CAMPING"> CAMPING</label>
+            <label><input type="checkbox" value="SIGHTSEEING"> SIGHTSEEING</label>
+            <label><input type="checkbox" value="PHOTOGRAPHY"> PHOTOGRAPHY</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="LIGHT AND SOUND SHOW"> LIGHT AND SOUND SHOW</label>
+            <label><input type="checkbox" value="SHOPPING"> SHOPPING</label>
+            <label><input type="checkbox" value="ARCHITECTURAL STUDY"> ARCHITECTURAL STUDY</label>
+            <label><input type="checkbox" value="FLOWER PHOTOGRAPHY"> FLOWER PHOTOGRAPHY</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="SUNSET VIEW"> SUNSET VIEW</label>
+            <label><input type="checkbox" value="PICNIC"> PICNIC</label>
+            <label><input type="checkbox" value="NATURE WALK"> NATURE WALK</label>
+            <label><input type="checkbox" value="BIRD WATCHING"> BIRD WATCHING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="LANDSCAPE SKETCHING"> LANDSCAPE SKETCHING</label>
+            <label><input type="checkbox" value="MEDITATION AND RELAXATION"> MEDITATION AND RELAXATION</label>
+            <label><input type="checkbox" value="GUIDED TOURS"> GUIDED TOURS</label>
+            <label><input type="checkbox" value="RELIGIOUS VISIT"> RELIGIOUS VISIT</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="MOSQUE EXPLORATION"> MOSQUE EXPLORATION</label>
+            <label><input type="checkbox" value="EXHIBITIONS"> EXHIBITIONS</label>
+            <label><input type="checkbox" value="LIBRARY"> LIBRARY</label>
+            <label><input type="checkbox" value="WORKSHOPS"> WORKSHOPS</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="BOAT RIDE"> BOAT RIDE</label>
+            <label><input type="checkbox" value="BALLOON RIDE"> BALLOON RIDE</label>
+            <label><input type="checkbox" value="CHILDREN'S PARK"> CHILDREN'S PARK</label>
+            <label><input type="checkbox" value="BHAJANS AND KIRTANS"> BHAJANS AND KIRTANS</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ARTI"> ARTI</label>
+            <label><input type="checkbox" value="SPIRITUAL LECTURES"> SPIRITUAL LECTURES</label>
+            <label><input type="checkbox" value="SUFI CULTURE"> SUFI CULTURE</label>
+            <label><input type="checkbox" value="FISHING"> FISHING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="LOCAL FOOD"> LOCAL FOOD</label>
+            <label><input type="checkbox" value="CRUISE"> CRUISE</label>
+            <label><input type="checkbox" value="LIGHTHOUSE"> LIGHTHOUSE</label>
+            <label><input type="checkbox" value="SEAFOOD"> SEAFOOD</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="MUSEUM VISIT"> MUSEUM VISIT</label>
+            <label><input type="checkbox" value="CULTURAL EVENTS AND ACTIVITIES"> CULTURAL EVENTS AND ACTIVITIES</label>
+            <label><input type="checkbox" value="TEMPLE VISIT"> TEMPLE VISIT</label>
+            <label><input type="checkbox" value="GARDEN VISIT"> GARDEN VISIT</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="CAVE EXPLORATION"> CAVE EXPLORATION</label>
+            <label><input type="checkbox" value="MONUMENTAL SKETCHING"> MONUMENTAL SKETCHING</label>
+            <label><input type="checkbox" value="ARCHITECTURAL PHOTOGRAPHY"> ARCHITECTURAL PHOTOGRAPHY</label>
+            <label><input type="checkbox" value="YOGA"> YOGA</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="SPIRITUAL EXPERIENCES"> SPIRITUAL EXPERIENCES</label>
+            <label><input type="checkbox" value="BOTANICAL TOURS"> BOTANICAL TOURS</label>
+            <label><input type="checkbox" value="GREENHOUSE EXPLORATION"> GREENHOUSE EXPLORATION</label>
+            <label><input type="checkbox" value="HORSE RIDING"> HORSE RIDING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ELEPHANT RIDE"> ELEPHANT RIDE</label>
+            <label><input type="checkbox" value="CYCLING"> CYCLING</label>
+            <label><input type="checkbox" value="WATER SPORTS"> WATER SPORTS</label>
+            <label><input type="checkbox" value="CANOEING"> CANOEING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ZIPLINING"> ZIPLINING</label>
+            <label><input type="checkbox" value="PILGRIMAGE"> PILGRIMAGE</label>
+            <label><input type="checkbox" value="FLORA AND FAUNA EXPLORATION"> FLORA AND FAUNA EXPLORATION</label>
+            <label><input type="checkbox" value="HIKING"> HIKING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ZOO VISIT"> ZOO VISIT</label>
+            <label><input type="checkbox" value="WATERFALLS"> WATERFALLS</label>
+            <label><input type="checkbox" value="SAILING"> SAILING</label>
+            <label><input type="checkbox" value="KAYAKING"> KAYAKING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="BEACH VOLLEYBALL"> BEACH VOLLEYBALL</label>
+            <label><input type="checkbox" value="ROCK CLIMBING"> ROCK CLIMBING</label>
+            <label><input type="checkbox" value="TEA GARDEN TOUR"> TEA GARDEN TOUR</label>
+            <label><input type="checkbox" value="RESEARCH CENTER TOUR"> RESEARCH CENTER TOUR</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ROPEWAY"> ROPEWAY</label>
+            <label><input type="checkbox" value="SPA AND WELLNESS"> SPA AND WELLNESS</label>
+            <label><input type="checkbox" value="SKIING"> SKIING</label>
+            <label><input type="checkbox" value="SNOWBOARDING"> SNOWBOARDING</label>
+          </div>
+          <div>
+            <label><input type="checkbox" value="ICE SKATING"> ICE SKATING</label>
+            <label><input type="checkbox" value="SNORKELLING"> SNORKELLING</label>
+            <label><input type="checkbox" value="ECO TOURISM"> ECO TOURISM</label>
+            <label><input type="checkbox" value="PARAGLIDING"> PARAGLIDING</label>
+          </div>
+          
+        </div>
+      </div>
+      <button type="button" onclick="getRecommendations()">Find Recommendations</button>
+    </form>
+
+  <p id="error-message" class="no-results" style="display: none;"></p>
+    <div id="results" class="results"></div>
+  </div>
+
+  <script>
+    function toggleDropdown() {
+      let dropdown = document.getElementById("activityDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+  
+   
+    async function getRecommendations() {
+  let seasonInput = document.getElementById("season").value.trim();
+  let checkboxes = document.querySelectorAll('#activityDropdown input[type="checkbox"]:checked');
+  let activities = Array.from(checkboxes).map(cb => cb.value);
+  let errorMessage = document.getElementById("error-message");
+  let resultsDiv = document.getElementById("results");
+
+  resultsDiv.innerHTML = "";
+  errorMessage.style.display = "none";
+
+  if (!seasonInput || activities.length === 0) {
+    errorMessage.innerText = "Please select both a season and at least one activity.";
+    errorMessage.style.display = "block";
+    return;
+  }
+
+  let seasons = [seasonInput]; 
+
+  try {
+    let response = await fetch("http://127.0.0.1:5000/recommend", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ season: seasons, activity: activities })
+    });
+
+    let data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Unknown error");
+    }
+
+    if (data.recommended_spots.length === 0) {
+      errorMessage.innerText = "No recommendations found. Please try different preferences.";
+      errorMessage.style.display = "block";
+      return;
+    }
+
+    data.recommended_spots.forEach(spot => {
+      let imageUrl = spot.IMAGE ? `http://127.0.0.1:5000/get-image/${spot.IMAGE.replace(/\\/g, '/')}` : "default.jpg";
+
+      let card = `
+        <div class="card">
+          <a href="${spot.CITY_LINK}" target="_blank">
+            <img src="${imageUrl}" alt="Image for ${spot.CITY}" onerror="this.onerror=null; this.src='default.jpg';">
+            <h3>${spot["TOURIST SPOT"]}</h3>
+            <p>${spot.CITY}, ${spot.STATE}</p>
+          </a>
+        </div>
+      `;
+      resultsDiv.innerHTML += card;
+    });
+
+  } catch (error) {
+    console.error("Error fetching recommendations:", error);
+    errorMessage.innerText = "Error fetching recommendations. Please check console for details.";
+    errorMessage.style.display = "block";
+  }
+}
+
+  </script>
+</body>
+</html>

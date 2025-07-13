@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Kanchipuram</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/responsive.css"/>
+        <link rel ="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+<link rel="stylesheet" href="css/destdescription.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="./image/Ghummakkad.png" alt="" />
+            </div>
+            
+            <ul>
+                <div class="btn">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">ABOUT</a></li>
+                <li><a href="destination.html">DESTINATIONS</a></li>
+                <li><a href="#">GET RECOMMENDATIONS</a></li>
+            </ul>
+            <div class="btn">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </nav>
+    </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <!-- Slideshow container -->
+<section id="image-slider">
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+
+  
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="./image/kanchipuram/Elambareswarar-Temple-Kanchipuram.jpg" style="width:100%">
+     
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="./image/kanchipuram/Kanchi_Kailasanathar_Temple.jpg" style="width:100% ">
+      
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">3/ 4</div>
+        <img src="./image/kanchipuram/184714285b966d91496bc158b352fb05.jpg" style="width:100%">
+        
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">4/ 4</div>
+        <img src="./image/kanchipuram/kailasanathar-temple-kanchipuram-tamil-nadu-hero.jpg" style="width:100%">
+       
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  
+  </div>
+</section>
+
+<!--==========content area start==========-->
+<div class="container">
+    <h2 class="headings"><u>Kanchipuram</u></h2>
+    <p class="heading-normal-txt">The City of Thousand Temples</p>
+    <div class="content">
+    <div class="left-side>">
+        
+        <p class="lead">
+            Kanchipuram, often called the City of a Thousand Temples, is a historic and spiritual hub in Tamil Nadu, India. 
+            Renowned for its magnificent temples built in the Dravidian architectural style, 
+            the city is a significant pilgrimage center for Hindus, particularly devotees of Lord Shiva and Lord Vishnu.
+            Iconic temples like the Ekambareswarar Temple, Kailasanathar Temple, and Varadharaja Perumal Temple showcase intricate carvings and ancient heritage. Apart from its religious importance, Kanchipuram is world-famous for its exquisite handwoven silk sarees, known for their rich zari work and fine craftsmanship. With a history dating back over 2,000 years, Kanchipuram was once a major center of learning and culture under the Pallava dynasty. 
+            The city continues to attract visitors with its blend of spirituality, history, and traditional artistry.
+</p>
+    </div>
+    <div class="right-side">
+        <p>
+            <div id="weather-info" data-city="Kanchipuram">
+                <h3>Current Weather in <span id="city-name">Kanchipuram</span></h3>
+                <p id="weather-details">Loading...</p>
+                <div id="weather-map" style="height: 400px; width: 100%;"></div>
+                <div style="text-align:center;">
+                    <button> <a href="https://www.irctc.co.in" target="_blank" class="btn-booking">Book Flights, Trains & Hotels</a> </button> 
+                  </div>
+            </div>
+            
+        </p>
+    </div>
+</div>
+</div>
+<!--===========content area end===========-->
+<div class="container">
+    <h1 class="headings"> Popular <span>Tourist</span> Attractions: </h1>
+    <br>
+<div class="row-wise-image">
+    <div class="lg-img">
+        <img src="./image/kanchipuram/1-vedanthangal-bird-sanctuary-attr-hero-1.jpg" alt="sanctuary"/>
+        <div class="img-content">
+            <h2>Vedanthangal Bird Sanctuary</h2>   
+        </div>
+        
+</div>
+    <div class="lg-img">
+            <img src="./image/kanchipuram/butter ball.jpg" alt="ball"/>
+            <div class="img-content">
+                <h2>Krishna's Butter Ball</h2>   
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/kanchipuram/kanchi-kudil-entrance.jpg" alt="kanchi"/>
+            <div class="img-content">
+                <h2>Kanchi Kudil</h2>
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/kanchipuram/Kanchipuram.in_Kamakshi-Amman_Temple.jpg" alt="temple"/>
+            <div class="img-content">
+                <h2>Kamakshi Amman Temple</h2>
+            </div>
+    </div>
+</div>
+  <!--========Js file =========-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/destdescription.js"></script>
+    <script src="js/weather.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKW3-nbqZ8w2OnNphyqpfcPk4V-xEIALA&callback=initMap"></script>
+
+    </body>
+    </html>

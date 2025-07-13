@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Recommender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+    header {
+      background-color: maroon;
+      color: white;
+      padding: 1em 0;
+      text-align: center;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input,
+    button {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: maroon;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: maroon;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      display: none;
+    }
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .no-results {
+      text-align: center;
+      color: gray;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Travel Recommender System</h1>
+  </header>
+  <div class="container">
+    <form id="recommendationForm">
+      <label for="season">Preferred Season:</label>
+      <input type="text" id="season" placeholder="e.g., Winter, Summer" required />
+
+      <label for="activity">Preferred Activity:</label>
+      <input type="text" id="activity" placeholder="e.g., Trekking, Beach, Historical" required />
+
+      <button type="button" onclick="getRecommendations()">Find Recommendations</button>
+    </form>
+
+    <p id="error-message" class="no-results" style="display: none;"></p>
+
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Tourist Spot</th>
+          <th>Type of Attraction</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function getRecommendations() {
+      let seasonInput = document.getElementById("season").value.trim();
+      let activityInput = document.getElementById("activity").value.trim();
+      let errorMessage = document.getElementById("error-message");
+      let resultsTable = document.getElementById("resultsTable");
+      let resultsBody = document.getElementById("resultsBody");
+
+      // Clear previous results
+      resultsBody.innerHTML = "";
+      resultsTable.style.display = "none";
+      errorMessage.style.display = "none";
+
+      if (!seasonInput || !activityInput) {
+        errorMessage.innerText = "Please enter both season and activity.";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      // Convert season and activity into lists (splitting by comma)
+      let seasons = seasonInput.split(",").map(s => s.trim());
+      let activities = activityInput.split(",").map(a => a.trim());
+
+      console.log("Sending data:", { season: seasons, activity: activities }); // Debugging
+
+      try {
+        let response = await fetch("http://127.0.0.1:5000/recommend", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ season: seasons, activity: activities })
+        });
+
+        let data = await response.json();
+
+        if (data.error) {
+          errorMessage.innerText = data.error;
+          errorMessage.style.display = "block";
+        } else if (data.recommended_spots.length === 0) {
+          errorMessage.innerText = "No recommendations found. Please try different preferences.";
+          errorMessage.style.display = "block";
+        } else {
+          // Populate the table with image and other data
+          data.recommended_spots.forEach(spot => {
+            // Convert backslashes to forward slashes, then replace "image/" with "/images/"
+            let imageUrl = spot.IMAGE_PATH
+                              .replace(/\\/g, '/')   // Convert backslashes
+                              .replace(/^image\//, '/images/');  // Replace prefix
+
+            console.log("Converted image URL:",imageUrl)
+
+            let row = `<tr>
+                <td><img src="${imageUrl}" alt="Image for ${spot.CITY}" style="width:100px; height:auto;"></td>
+                <td>${spot.CITY}</td>
+                <td>${spot.STATE}</td>
+                <td>${spot["TOURIST SPOT"]}</td>
+                <td>${spot["TYPE OF ATTRACTION"]}</td>
+              </tr>`;
+            resultsBody.innerHTML += row;
+          });
+
+          resultsTable.style.display = "table";
+        }
+      } catch (error) {
+        console.error("Error fetching recommendations:", error);
+        errorMessage.innerText = "Error fetching recommendations. Please try again.";
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

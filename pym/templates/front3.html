@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Recommender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+    header {
+      background-color: maroon;
+      color: white;
+      padding: 1em 0;
+      text-align: center;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 1200px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    input,
+    button {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: maroon;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: darkred;
+    }
+    .results {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+      width: 300px;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+    }
+    .no-results {
+      text-align: center;
+      color: gray;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Travel Recommender System</h1>
+  </header>
+  <div class="container">
+    <form id="recommendationForm">
+      <label for="season">Preferred Season:</label>
+      <input type="text" id="season" placeholder="e.g., Winter, Summer" required />
+
+      <label for="activity">Preferred Activity:</label>
+      <input type="text" id="activity" placeholder="e.g., Trekking, Beach, Historical" required />
+
+      <button type="button" onclick="getRecommendations()">Find Recommendations</button>
+    </form>
+
+    <p id="error-message" class="no-results" style="display: none;"></p>
+    <div id="results" class="results"></div>
+  </div>
+
+  <script>
+    async function getRecommendations() {
+      let seasonInput = document.getElementById("season").value.trim();
+      let activityInput = document.getElementById("activity").value.trim();
+      let errorMessage = document.getElementById("error-message");
+      let resultsDiv = document.getElementById("results");
+      
+      // Clear previous results
+      resultsDiv.innerHTML = "";
+      errorMessage.style.display = "none";
+
+      if (!seasonInput || !activityInput) {
+        errorMessage.innerText = "Please enter both season and activity.";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      let seasons = seasonInput.split(",").map(s => s.trim());
+      let activities = activityInput.split(",").map(a => a.trim());
+
+      try {
+        let response = await fetch("http://127.0.0.1:5000/recommend", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ season: seasons, activity: activities })
+        });
+
+        let data = await response.json();
+
+        if (data.error) {
+          errorMessage.innerText = data.error;
+          errorMessage.style.display = "block";
+        } else if (data.recommended_spots.length === 0) {
+          errorMessage.innerText = "No recommendations found. Please try different preferences.";
+          errorMessage.style.display = "block";
+        } else {
+          data.recommended_spots.forEach(spot => {
+            let imageUrl = spot.IMAGE_PATH.replace(/\\/g, '/').replace(/^image\//, '/images/');
+            let card = `<div class="card">
+                <a href="{{ url_for('ghummakad', filename=spot.CITY.lower() + '.html') }}" target="_parent">
+                <img src="${imageUrl}" alt="Image for ${spot.CITY}">
+                <h3>${spot["TOURIST SPOT"]}</h3>
+                <p>${spot.CITY}</p>
+                </a>
+              </div>`;
+
+            resultsDiv.innerHTML += card;
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching recommendations:", error);
+        errorMessage.innerText = "Error fetching recommendations. Please try again.";
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

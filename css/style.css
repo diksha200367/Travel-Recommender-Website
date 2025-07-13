@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --primary-color:maroon ;
+    --white-color: #fff;
+    --light-gray-color: #ddd;
+    
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins" , sans-serif;
+}
+
+html{
+    font-size: 16px;
+}
+
+/* --------utility classes start -------- */
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding:  0 2rem;
+    width: 100%;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+ a{
+    text-decoration: none;
+    
+
+ }
+.heading-normal-txt{
+    font-size: 1rem ;
+    letter-spacing: 6px;
+    color: var(--primary-color); 
+}
+
+.headings{
+    font-size: 3rem;
+    font-family: "ubuntu";
+    padding-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.headings span{
+    color: var(--primary-color);
+    font-family: "ubuntu";
+    padding: 1rem;
+}
+.lead{
+    font-size: 1.4rem;
+    line-height: 2;
+    text-align: justify;
+}
+.primary-btn{
+    width:50%;
+    outline: none;
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-radius: 4px ;
+    color: var(--white-color);
+    cursor: pointer;
+}
+/* -------------- utility classes end ----------- */
+
+/* -------------- header starts ----------------- */
+header{
+    padding: 1rem 0 ;
+    background: var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    width:100% ;
+    transition: all 0.3s ease-in-out;
+}
+header.sticky{
+    background: var(--primary-color);
+}
+.logo img{
+    width: 150px;
+    object-fit: cover;
+    padding: 1rem;
+}
+nav{
+     height: 30px; 
+    display: flex ;
+    justify-content: space-between;
+    align-items:center;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+ nav ul li{
+    margin: 0 0.9rem;
+    position: relative;
+ }
+nav ul li a{
+    color: var(--white-color);
+    font-size: 1.1rem;
+}
+
+nav ul li::before {
+    content:"" ;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--white-color);
+    opacity: 0;
+    transition: all 0.3s ease-in;
+
+}
+ nav ul li:hover::before{
+    opacity: 1;
+    width: 100%
+
+ }
+
+ .btn{
+    font-size: 1.3rem;
+     color: var(--white-color);
+     cursor: pointer;
+     display: none;
+     
+ }
+
+/* -------------- header ends  ------------------ */
+/* -------------- showcase starts  ------------------ */
+main{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.swiper{
+    height: 100vh ;
+}
+.slider-container{
+    width: 100%;
+}
+.slider-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image-overlay{
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    font-family: "ubuntu";
+    transform: translate(-50% , -50%);
+}
+.image-overlay p{
+    font-size: 1.3rem;
+    letter-spacing: 8px;
+    color: var(--white-color);
+    animation: animate 4s forwards;
+}
+.image-overlay h2{
+    font-size: 5cap;
+    color: var(--white-color);
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    animation: animate 4s forwards;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay{
+    position: relative;
+   
+}
+.overlay::after{
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    
+}
+
+@keyframes animate{
+    0%{
+        transform: translatex(-50%);
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.2;
+    }
+    70%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(-0%) ;
+    }
+}
+
+.image-overlay h2 span{
+    color: transparent;
+    -webkit-text-stroke: 3px  var(--white-color);
+}
+
+
+/* -------------- showcase ends  ------------------ */
+
+/* -------------- search starts  ------------------ */
+#location-search{
+    transform: translateY(-170%);
+}
+.form-wrapper{
+   background-color: rgba(0, 0, 0, 0.6);
+   padding: 1rem;
+   width:100% ;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-control{
+width: 100%;
+}
+form select{
+    padding: 0.6rem;
+    outline: none;
+    font-size: 1rem;
+    color: #000;
+    height: 45px;
+    border: 1px solid var(--light-gray-color);
+    margin: 0 0 0.4rem;
+    border-radius: 4px;
+}
+/* -------------- search ends  ------------------ */
+
+/* -------------- About page starts  ------------------ */
+.about-content-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 3rem;
+    margin: 3rem 0;
+}
+.about-content-wrapper h2 span{
+    color: var(--primary-color);
+    font-family: "ubuntu";
+}
+.about-content-wrapper ul{
+    list-style: none;
+}
+.about-content-wrapper ul .icons{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+.about-content-wrapper ul .icons i{
+    background: var(--primary-color);
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: var(--white-color);
+
+}
+.about-content-wrapper ul p{
+    margin-left: 1rem; 
+}
+.agency-right-side .img{
+    position: relative;
+}
+.agency-right-side .img img{
+
+height: 100%;
+width: 75%;
+object-fit: cover;
+margin: 0 auto;
+display: block;
+transition: 0.5s ease-in ;
+}
+.agency-right-side .img::after{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 55px;
+    bottom: 0;
+    right: 0;
+    background: var(--primary-color);
+    height: 100%;
+    width: 70%;
+    z-index: -2;
+}
+.agency-right-side .img:hover{
+    transform: scale(0.95);
+}
+/* -------------- About page ends  ------------------ */
+
+#choose-desination{
+    padding: 6rem 0;
+}
+.choose-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 2rem;
+}
+.lg-img{
+    position: relative;
+    transition: all 0.5s ;
+    cursor: pointer;
+    width: 100%;
+    height: 96%;
+    
+
+}
+
+.lg-img:hover::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    
+    
+}
+.lg-img:hover{
+    transform: scale(1.02);  
+}
+.img-content{
+    position: absolute;
+    bottom: 20px;
+
+}
+.img-content h2{
+    padding: 0 1rem;
+    color: var(--white-color);
+}
+.hidden-content{
+    padding: 0.5rem 1rem;
+    color: var(--white-color);
+    transform: translateY(120%);
+    transition: all 0.5s ease-in-out ;
+}
+.lg-img:hover .hidden-content{
+transform: translateY(0);
+}
+.price-label{
+    size: 15;
+    
+    color: var(--white-color);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    transform: translateY(-120%);
+    transition: all 0.5s ease-in-out;
+}
+.lg-img:hover .price-label{
+    transform: translateY(0);
+}
+.row-wise-image{
+    position: absolute;
+    height: 50%;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3,0.78fr);
+    grid-gap: 3rem;
+}
+/* -------------- popular destinations ends  ------------ */
+
+

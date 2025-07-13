@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Kolkata</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/responsive.css"/>
+        <link rel ="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+<link rel="stylesheet" href="css/destdescription.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="./image/Ghummakkad.png" alt="" />
+            </div>
+            
+            <ul>
+                <div class="btn">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">ABOUT</a></li>
+                <li><a href="destination.html">DESTINATIONS</a></li>
+                <li><a href="front4.html">GET RECOMMENDATIONS</a></li>
+            </ul>
+            <div class="btn">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </nav>
+    </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <!-- Slideshow container -->
+<section id="image-slider">
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+
+  
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="./image/kolkata/Victoria Memorial - Calcutta.jpg" style="width:100%">
+     
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="./image/kolkata/Tipu Sultan Mosque.jpg" style="width:100% ">
+      
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">3/ 4</div>
+        <img src="./image/kolkata/Park Street.jpg" style="width:100%">
+        
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">4/ 4</div>
+        <img src="./image/kolkata/1589018698_kolkata_travel_videos.jpg" style="width:100%">
+       
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  
+  </div>
+</section>
+
+<!--==========content area start==========-->
+<div class="container">
+    <h2 class="headings"><u>Kolkata</u></h2>
+    <p class="heading-normal-txt">Cultural Capital Of India</p>
+    <div class="content">
+    <div class="left-side>">
+        
+        <p class="lead">
+            Kolkata, the capital of West Bengal, is a city rich in history, culture, and intellectual heritage. Known as the "Cultural Capital of India," it was once the capital of British India and retains its colonial charm through landmarks like Victoria Memorial, Howrah Bridge, and St. Paul’s Cathedral. The city is a hub of literature, art, and cinema, home to legends like Rabindranath Tagore and Satyajit Ray. Its vibrant festivals, especially Durga Puja, showcase its deep-rooted traditions, transforming the city into a grand celebration of art and devotion.  
+
+The city's tram system, bustling College Street, and historic Park Street add to its old-world charm, while the Eden Gardens remains a paradise for cricket lovers. Kolkata’s markets, such as New Market and Gariahat, are a shopper’s delight, offering everything from traditional Bengali sarees to street food delicacies. The city's famous Bengali cuisine—including rasgulla, mishti doi, kathi rolls, and kosha mangsho—makes it a food lover’s paradise. With its blend of heritage, modernity, warmth, and artistic spirit, Kolkata offers a unique and unforgettable experience to all who visit.
+</p>
+    </div>
+    <div class="right-side">
+        <p>
+            <div id="weather-info" data-city="Kolkata">
+                <h3>Current Weather in <span id="city-name">Kolkata</span></h3>
+                <p id="weather-details">Loading...</p>
+                <div id="weather-map" style="height: 400px; width: 100%;"></div>
+                <div style="text-align:center;">
+                    <button> <a href="https://www.irctc.co.in" target="_blank" class="btn-booking">Book Flights, Trains & Hotels</a> </button> 
+                  </div>
+            </div>
+            
+        </p>
+    </div>
+</div>
+</div>
+<!--===========content area end===========-->
+<div class="container">
+    <h1 class="headings"> Popular <span>Tourist</span> Attractions: </h1>
+    <br>
+<div class="row-wise-image">
+    <div class="lg-img">
+        <img src="./image/kolkata/Victoria Memorial, Kolkata, India.jpg" alt="memorial"/>
+        <div class="img-content">
+            <h2>Victoria Memorial</h2>   
+        </div>
+        
+</div>
+    <div class="lg-img">
+            <img src="./image/kolkata/Mesmerizing Howrah Bridge.jpg" alt="bridge"/>
+            <div class="img-content">
+                <h2>Howrah Bridge</h2>   
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/kolkata/Marble Palace.jpg" alt="Palace"/>
+            <div class="img-content">
+                <h2>Marble Palace</h2>
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/kolkata/Dakshineswar  kolkata.jpg" alt="temple"/>
+            <div class="img-content">
+                <h2>Dakshineswar Kali Temple</h2>
+            </div>
+    </div>
+    <div class="lg-img">
+        <img src="./image/kolkata/clock tower.jpg" alt="tower"/>
+        <div class="img-content">
+            <h2>Clock Tower</h2>
+        </div>
+</div>
+</div>
+  <!--========Js file =========-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/destdescription.js"></script>
+    <script src="js/weather.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKW3-nbqZ8w2OnNphyqpfcPk4V-xEIALA&callback=initMap"></script>
+
+    </body>
+    </html>

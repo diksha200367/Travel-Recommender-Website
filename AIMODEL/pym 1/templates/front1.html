@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color : maroon;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color:maroon;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: maroon;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            display: none;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-results {
+            text-align: center;
+            color: gray;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Travel Recommender System</h1>
+    </header>
+    <div class="container">
+        <form id="recommendationForm">
+            <label for="season">Preferred Season:</label>
+            <input type="text" id="season" placeholder="e.g., Winter, Summer" required>
+
+            <label for="activity">Preferred Activity:</label>
+            <input type="text" id="activity" placeholder="e.g., Trekking, Beach, Historical" required>
+
+            <button type="button" onclick="getRecommendations()">Find Recommendations</button>
+        </form>
+
+        <p id="error-message" class="no-results" style="display: none;"></p>
+
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Tourist Spot</th>
+                    <th>Type of Attraction</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function getRecommendations() {
+            let season = document.getElementById("season").value.trim();
+            let activity = document.getElementById("activity").value.trim();
+            let errorMessage = document.getElementById("error-message");
+            let resultsTable = document.getElementById("resultsTable");
+            let resultsBody = document.getElementById("resultsBody");
+
+            // Clear previous results
+            resultsBody.innerHTML = "";
+            resultsTable.style.display = "none";
+            errorMessage.style.display = "none";
+
+            if (!season || !activity) {
+                errorMessage.innerText = "Please enter both season and activity.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            try {
+                let response = await fetch("http://127.0.0.1:5000/recommend", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ season, activity })
+                });
+
+                let data = await response.json();
+
+                if (data.error) {
+                    errorMessage.innerText = data.error;
+                    errorMessage.style.display = "block";
+                } else if (data.recommended_spots.length === 0) {
+                    errorMessage.innerText = "No recommendations found. Please try different preferences.";
+                    errorMessage.style.display = "block";
+                } else {
+                    // Populate the table
+                    data.recommended_spots.forEach(spot => {
+                        let row = `<tr>
+                            <td>${spot.CITY}</td>
+                            <td>${spot.STATE}</td>
+                            <td>${spot["TOURIST SPOT"]}</td>
+                            <td>${spot["TYPE OF ATTRACTION"]}</td>
+                        </tr>`;
+                        resultsBody.innerHTML += row;
+                    });
+
+                    resultsTable.style.display = "table";
+                }
+            } catch (error) {
+                errorMessage.innerText = "Error fetching recommendations. Please try again.";
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

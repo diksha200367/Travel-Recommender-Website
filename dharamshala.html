@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dharamshala</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/responsive.css"/>
+        <link rel ="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+<link rel="stylesheet" href="css/destdescription.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="./image/Ghummakkad.png" alt="" />
+            </div>
+            
+            <ul>
+                <div class="btn">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">ABOUT</a></li>
+                <li><a href="destination.html">DESTINATIONS</a></li>
+                <li><a href="front4.html">GET RECOMMENDATIONS</a></li>
+            </ul>
+            <div class="btn">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </nav>
+    </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <!-- Slideshow container -->
+<section id="image-slider">
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 5</div>
+      <img src="./image/dharamshala/dharamshala_main.jpg" style="width:100% ">
+      
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">3/ 5</div>
+        <img src="./image/dharamshala/3.jpg" style="width:100%">
+        
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">4/ 5</div>
+        <img src="./image/dharamshala/4.jpg" style="width:100%">
+       
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">5/ 5</div>
+        <img src="./image/dharamshala/1.jpg" style="width:100%">
+        
+      </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+  
+  </div>
+</section>
+
+<!--==========content area start==========-->
+<div class="container">
+    <h2 class="headings"><u>Dharamshala</u></h2>
+    <p class="heading-normal-txt">A city in Himachal Pradesh</p>
+    <div class="content">
+    <div class="left-side>">
+        
+        <p class="lead">
+            
+            Dharamshala, nestled in the Himalayas, is a breathtaking hill station known for its serene landscapes, 
+            lush greenery, and snow-capped mountains. Home to the Dalai Lama, it exudes a peaceful Tibetan ambiance
+            with monasteries, prayer flags, and vibrant local culture. The scenic beauty of Dharamshala is enhanced 
+            by its pine forests, waterfalls, and mesmerizing views from Triund. Whether exploring McLeod Ganj, 
+            trekking through the Dhauladhar range, or enjoying the tranquility of nature, Dharamshala offers a 
+            perfect blend of spirituality and adventure.
+</p>
+    </div>
+    <div class="right-side">
+        <p>
+            <div id="weather-info" data-city="Dharamshala">
+                <h3>Current Weather in <span id="city-name">Dharamshala</span></h3>
+                <p id="weather-details">Loading...</p>
+                <div id="weather-map" style="height: 400px; width: 100%;"></div>
+                <div style="text-align:center;">
+                    <button> <a href="https://www.irctc.co.in" target="_blank" class="btn-booking">Book Flights, Trains & Hotels</a> </button> 
+                  </div>
+            </div>
+            
+        </p>
+    </div>
+</div>
+</div>
+<!--===========content area end===========-->
+<div class="container">
+    <h1 class="headings"> Popular <span>Tourist</span> Attractions: </h1>
+    <br>
+<div class="row-wise-image">
+    <div class="lg-img">
+            <img src="./image/dharamshala/Balance - Triund, Dharanshala.jpg" alt="Triund"/>
+            <div class="img-content">
+                <a href="https://en.wikipedia.org/wiki/Triund" target="_blank" style="color: blue;">
+                <h2>Triund Trek</h2>   </a>
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/dharamshala/Bhagsung Waterfall.jpg" alt="Bhagsung Waterfall"/>
+            <div class="img-content">
+                <a href="https://en.wikipedia.org/wiki/Bhagsu" target="_blank" style="color: blue;">
+                <h2>Bhagsung Waterfall</h2></a>
+            </div>
+            
+    </div>
+
+    <div class="lg-img">
+            <img src="./image/dharamshala/Dalai Lama Temple Complex.jpg" alt="Dalai Lama Temple"/>
+            <div class="img-content">
+                <a href="https://en.wikipedia.org/wiki/Namgyal_Monastery" target="_blank" style="color: blue;">
+                <h2>Dalai lama Temple</h2></a>
+            </div>
+    </div>
+    <div class="lg-img">
+        <img src="./image/dharamshala/hpca stadium.jpg" alt="hpca stadium"/>
+        <div class="img-content">
+            <a href="https://en.wikipedia.org/wiki/Himachal_Pradesh_Cricket_Association_Stadium" target="_blank" style="color: blue;">
+            <h2>HPCA Cricket Stadium</h2></a>
+          </div>
+</div>
+<div class="lg-img">
+    <img src="./image/dharamshala/gyuto monastry.jpg" alt="gyuto monastry"/>
+    <div class="img-content">
+        <a href="https://en.wikipedia.org/wiki/Gyuto_Order" target="_blank" style="color: blue;">
+        <h2>Gyuto Monastry</h2></a>
+    </div>
+</div>
+<div class="lg-img">
+    <img src="./image/dharamshala/naddi_viewpoint.jpg" alt="naddi view point"/>
+    <div class="img-content">
+        <a href="https://en.wikipedia.org/wiki/Naddi" target="_blank" style="color: blue;">
+        <h2>Naddi Viewpoint</h2></a>
+    </div>
+</div>
+
+</div>
+  <!--========Js file =========-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/destdescription.js"></script>
+    <script src="js/weather.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKW3-nbqZ8w2OnNphyqpfcPk4V-xEIALA&callback=initMap"></script>
+
+    </body>
+    </html>

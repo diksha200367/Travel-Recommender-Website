@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Hampi</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="css/responsive.css"/>
+ <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+ <link rel="stylesheet" href="css/destdescription.css"/>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+ <style>
+    .attraction-container { display: flex; flex-wrap: wrap; gap: 20px; }
+    .attraction-item { position: relative; cursor: pointer; width: 200px; text-align: center; }
+    .attraction-item img { width: 100%; height: auto; border-radius: 10px; }
+    .attraction-item input { display: none; }
+    .attraction-item.selected img { border: 4px solid #ff9800; }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+    <nav>
+        <div class="logo">
+            <img src="./image/Ghummakkad.png" alt="" />
+        </div>
+        <ul>
+            <div class="btn">
+                <i class="fas fa-times close-btn"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html">ABOUT</a></li>
+            <li><a href="destination.html">DESTINATIONS</a></li>
+            <li><a href="#">GET RECOMMENDATIONS</a></li>
+        </ul>
+        <div class="btn">
+            <i class="fas fa-bars menu-btn"></i>
+        </div>
+    </nav>
+</div>
+</header>
+<br><br><br>
+<section id="image-slider">
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="./image/humpy/Vastuchitra_Stone-Chariot-Hampi.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2/ 4</div>
+            <img src="./image/humpy/Vijaya Vittala temple.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">3/ 4</div>
+            <img src="./image/humpy/virupaksha_temple.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">4 / 4</div>
+            <img src="./image/humpy/humpy_bazaar.jpg" style="width:100%">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+</section>
+<div class="container">
+    <h2 class="headings"><u>Hampi</u></h2>
+    <p class="heading-normal-txt">A city in Karnataka</p>
+</div>
+<div class="container">
+    <h1 class="headings"> Popular <span>Tourist</span> Attractions: </h1>
+    <div class="attraction-container">
+        <div class="attraction-item" onclick="toggleSelection(this)">
+            <img src="./image/humpy/coracle ride.jpg" alt="Coracle Ride">
+            <p>Coracle Ride</p>
+            <input type="checkbox" value="Coracle Ride">
+        </div>
+        <div class="attraction-item" onclick="toggleSelection(this)">
+            <img src="./image/humpy/old palace.jpg" alt="Old Palace">
+            <p>Old Palace</p>
+            <input type="checkbox" value="Old Palace">
+        </div>
+        <div class="attraction-item" onclick="toggleSelection(this)">
+            <img src="./image/humpy/Stepwell_Hampi_Royal-Enclosure.jpg" alt="Royal Enclosure">
+            <p>Royal Enclosure</p>
+            <input type="checkbox" value="Royal Enclosure">
+        </div>
+        <div class="attraction-item" onclick="toggleSelection(this)">
+            <img src="./image/humpy/virupaksha.jpg" alt="Virupaksha Temple">
+            <p>Virupaksha Temple</p>
+            <input type="checkbox" value="Virupaksha Temple">
+        </div>
+    </div>
+    <button onclick="generateItinerary()">Create Itinerary</button>
+    <h3>Your Itinerary</h3>
+    <ul id="itinerary-list"></ul>
+    <button onclick="downloadPDF()">Download Itinerary as PDF</button>
+</div>
+<script>
+    function toggleSelection(element) {
+        let checkbox = element.querySelector("input");
+        checkbox.checked = !checkbox.checked;
+        element.classList.toggle("selected");
+    }
+    function generateItinerary() {
+        let selected = [];
+        document.querySelectorAll('.attraction-item input:checked').forEach((checkbox) => {
+            selected.push(checkbox.value);
+        });
+        if (selected.length === 0) {
+            alert("Please select at least one attraction!");
+            return;
+        }
+        let itineraryList = document.getElementById("itinerary-list");
+        itineraryList.innerHTML = "";
+        selected.forEach((place, index) => {
+            let listItem = document.createElement("li");
+            listItem.textContent = `${index + 1}. ${place} - ${9 + index}:00 AM`;
+            itineraryList.appendChild(listItem);
+        });
+    }
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        let doc = new jsPDF();
+        doc.text("Your Travel Itinerary", 10, 10);
+        let items = document.querySelectorAll("#itinerary-list li");
+        let y = 20;
+        items.forEach((item) => {
+            doc.text(item.textContent, 10, y);
+            y += 10;
+        });
+        doc.save("itinerary.pdf");
+    }
+    new Sortable(document.getElementById("itinerary-list"), { animation: 150 });
+</script>
+</body>
+</html>
